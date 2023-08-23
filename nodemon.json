@@ -1,0 +1,16 @@
+{
+    "restartable": "rs",
+    "ignore": [".git", "node_modules/**/node_modules"],
+    "verbose": true,
+    "execMap": {
+        "js": "node --harmony"
+    },
+    "events": {
+        "restart": "yarn build && yalc publish && yalc push --no-pure"
+    },
+    "watch": ["./src"],
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "ext": "js,json"
+}

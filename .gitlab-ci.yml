@@ -1,0 +1,39 @@
+stages:
+    - build
+    - newPublish
+
+build_job:
+    stage: build
+    variables:
+        #以克隆的模式获取当前分支代码
+        GIT_STRATEGY: clone
+    script:
+        - cur_dir=`pwd`
+        - npm install tar
+        - rm -rf  package-lock.json
+        - npm install --registry http://registry.npm.rdapp.com/
+        - npm run build
+    allow_failure: false
+    artifacts:
+        name: 'rdapp-web-metadata'
+        #需要下载的文件或文件夹，可写正则和多个
+        paths:
+            - dist/*
+        expire_in: 24h
+    tags:
+        #选择运行的gitrunner的tag，选择具有编译相关语言代码能力的gitrunner
+        - Vue_Build_Linux
+
+publish_job:
+    stage: newPublish
+    script:
+        - chcp 65001
+        - rd /S /Q examples
+        - rd /S /Q public
+        - rd /S /Q tests
+        - CALL cmd /c npm whoami
+        - CALL cmd /c npm publish --registry http://registry.npm.rdapp.com/
+    only:
+        - newPublish
+    tags:
+        - NPM_Publish

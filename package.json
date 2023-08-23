@@ -4,11 +4,11 @@
     "description": "Set cache to another page by frame postmessage and broadcastChannel",
     "main": "./dist/web-frame-channel.umd.js",
     "keywords": [
-        "station-encrypt"
+        "web-frame-channel"
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/laoxia7751/station-encrypt.git"
+        "url": "git+https://github.com/laoxia7751/web-frame-channel.git"
     },
     "author": "xiajitao",
     "license": "MIT",

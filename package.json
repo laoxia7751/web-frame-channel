@@ -1,13 +1,22 @@
 {
     "name": "web-frame-channel",
     "version": "1.0.0",
-    "description": "Set cache to another page by frame postmessage",
+    "description": "Set cache to another page by frame postmessage and broadcastChannel",
     "main": "./dist/web-frame-channel.umd.js",
+    "keywords": [
+        "station-encrypt"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/laoxia7751/station-encrypt.git"
+    },
+    "author": "xiajitao",
+    "license": "MIT",
     "scripts": {
         "update": "npm version patch",
         "build": "eslint --ext .js --fix ./src && rimraf ./dist && rollup -c",
         "dev": "nodemon nodemon.json",
-        "restart": "yarn build && yalc publish && yalc push"
+        "restart": "npm run build && yalc publish && yalc push"
     },
     "devDependencies": {
         "@babel/core": "^7.18.10",

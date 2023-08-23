@@ -8,18 +8,13 @@ export default {
         {
             file: './dist/web-frame-channel.umd.js',
             format: 'umd',
-            name: 'webFrameChannel',
-            globals: {
-                'rd-web-logger': 'log'
-            }
+            name: 'webFrameChannel'
+        },
+        {
+            file: './dist/web-frame-channel.esm.js',
+            format: 'esm'
         }
-        // {
-        //     file: './dist/index.js',
-        //     format: 'umd',
-        //     name: 'webMetadata',
-        // },
     ],
-    external: ['rd-web-logger'],
     plugins: [
         resolve(),
         babel({

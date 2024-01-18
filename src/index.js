@@ -16,6 +16,7 @@ class FrameChannel {
     }
 
     init(options = {}) {
+        console.log(123123, '1.0.2')
         window.FrameChannelDebug = this
         const { port, hostname, protocol } = window.location
         const defaultUrl = `${protocol}//${hostname}${port ? `:${port - 1}` : ''}`
@@ -104,11 +105,21 @@ class FrameChannel {
             throw new Error('通信频道链接失败')
         }
         oI.contentWindow.postMessage({ scene: 'checkPageHasOpen', from: config.role, _origin: 'FrameChannel' }, config.url)
-        setTimeout(() => {
-            if (!this.checkLinkStatus) {
-                window.open(config.url)
+        let interval;
+        let count = 0;
+        clearInterval(interval)
+        interval = setInterval(() => {
+            if(count >= 4 || (count > 0 && this.checkLinkStatus)){
+                clearInterval(interval);
+                count > 1 && window.open(config.url);
+                count = 0;
+            } else {
+                if(count === 0 && this.checkLinkStatus) {
+                    this.checkLinkStatus = false
+                }
+                count += 1
             }
-        }, 1000)
+        },500)
     }
 
     closeChannel() {

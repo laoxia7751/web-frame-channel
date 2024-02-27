@@ -16,7 +16,6 @@ class FrameChannel {
     }
 
     init(options = {}) {
-        console.log(123123, '1.0.2')
         window.FrameChannelDebug = this
         const { port, hostname, protocol } = window.location
         const defaultUrl = `${protocol}//${hostname}${port ? `:${port - 1}` : ''}`

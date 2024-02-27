@@ -1,6 +1,6 @@
 {
     "name": "web-frame-channel",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Set cache to another page by frame postmessage and broadcastChannel",
     "main": "./dist/web-frame-channel.umd.js",
     "keywords": [
